@@ -160,36 +160,36 @@ def process(filePath, ps, f, verbose):
 
 
 def main(args):
-    if not args:
-        print("args are required")
-        exit(0)
+    # if not args:
+    #     print("args are required")
+    #     exit(0)
 
     config = getConfig()
     ps = Pocketsphinx(**config)
 
-    if (args[0] == '--test'):
-        withGraphics = False
-        testsRootDir = "./../tests"
-        resultsDir = "./../testResults"
+    # if (args[0] == '--test'):
+    #     withGraphics = False
+    #     testsRootDir = "./../tests"
+    #     resultsDir = "./../testResults"
 
-        for dirName in os.listdir(testsRootDir):
+    #     for dirName in os.listdir(testsRootDir):
 
-            for filename in os.listdir(testsRootDir + "/" + dirName):
-                path = testsRootDir + "/" + dirName + "/" + filename
+    #         for filename in os.listdir(testsRootDir + "/" + dirName):
+    #             path = testsRootDir + "/" + dirName + "/" + filename
 
-                if(dirName == "indfrdic"):
-                    for deepFile in os.listdir(path):
-                        print(f"I'm in if {path}/{deepFile} and file name: {filename}")
-                        f = open(resultsDir + f"/{dirName}_{filename}_w_filter_results.txt",'a')
-                        process(path + "/" + deepFile,ps,f, withGraphics)
-                else:
-                    print(f"I'm in else {path}")
-                    f = open(resultsDir + f"/{dirName}_w_filter_results.txt",'a')
-                    process(path,ps,f, withGraphics)
-    elif (args[0] == '-P'):
-        withGraphics = True
-        f = open('result.txt', 'a')
-        process(args[1], ps, f, withGraphics)
+    #             if(dirName == "indfrdic"):
+    #                 for deepFile in os.listdir(path):
+    #                     print(f"I'm in if {path}/{deepFile} and file name: {filename}")
+    #                     f = open(resultsDir + f"/{dirName}_{filename}_w_filter_results.txt",'a')
+    #                     process(path + "/" + deepFile,ps,f, withGraphics)
+    #             else:
+    #                 print(f"I'm in else {path}")
+    #                 f = open(resultsDir + f"/{dirName}_w_filter_results.txt",'a')
+    #                 process(path,ps,f, withGraphics)
+    # elif (args[0] == '-P'):
+    withGraphics = True
+    f = open('result.txt', 'a')
+    process(args[0], ps, f, withGraphics)
 
 
         
